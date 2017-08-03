@@ -1,0 +1,41 @@
+1. select FirstName, LastName, CustomerId, Country from Customer where Country is not "USA";
+
+2. select * from Customer where Country is "Brazil";
+
+3. select FirstName, LastName, InvoiceId, InvoiceDate, BillingCountry from Customer left join Invoice on Customer.CustomerId = Invoice.CustomerId where Invoice.BillingCountry is "Brazil";
+
+4. select * from Employee where Employee.Title is "Sales Support Agent";
+
+5. select distinct Invoice.BillingCountry from Invoice;
+
+6. select Employee.FirstName, Employee.LastName, Invoice.InvoiceId from Employee left join Customer on Employee.EmployeeId = Customer.SupportRepId left join Invoice on Customer.CustomerId = Invoice.CustomerId where Invoice.InvoiceId is not null;
+
+7. select Customer.FirstName ||' '|| Customer.LastName as "Customer Name", Customer.Country, Invoice.Total, Employee.FirstName ||" "|| Employee.LastName as "Sale Agent" from Customer left join Invoice on Customer.CustomerId = Invoice.CustomerId left join Employee on Customer.SupportRepId = Employee.EmployeeId;
+
+8. select count(Invoice.InvoiceDate) from Invoice where strftime('%Y', Invoice.InvoiceDate) = "2009" or strftime('%Y', Invoice.InvoiceDate) = "2011";
+
+9. select sum(Invoice.Total) as "Totals", strftime('%Y', Invoice.InvoiceDate) as "Year" from Invoice group by strftime('%Y', Invoice.InvoiceDate) having strftime('%Y',Invoice.InvoiceDate) = "2009" or strftime('%Y',Invoice.InvoiceDate) = "2011";
+
+10. select count(InvoiceId) as "Line items for Invoice 37" from InvoiceLine where InvoiceLine.InvoiceId = "37";
+
+11. select InvoiceLine.InvoiceId, count(InvoiceLine.InvoiceId) as "Line Items" from InvoiceLine group by InvoiceLine.InvoiceId;
+
+12. select InvoiceLine.InvoiceLineId, Track.Name from InvoiceLine left join Track where InvoiceLine.TrackId = Track.TrackId order by InvoiceLine.InvoiceLineId asc;
+
+13. select InvoiceLine.InvoiceLineId, Track.Name, Artist.Name from InvoiceLine join Track on InvoiceLine.TrackId = Track.TrackId join Album on Track.AlbumId = Album.AlbumId join Artist on Album.ArtistId = Artist.ArtistId;
+
+14. select Invoice.BillingCountry, count(Invoice.InvoiceId) from Invoice group by Invoice.BillingCountry;
+
+15. select Playlist.Name, count(PlaylistTrack.PlaylistId) from Playlist left join PlaylistTrack on Playlist.PlaylistId = PlaylistTrack.PlaylistId group by Playlist.Name;
+
+16. select Track.Name as "Track Name", Album.Title as "Album Title", MediaType.Name as "Media Type", Genre.Name as "Genre" from Track join Album on Track.AlbumId = Album.AlbumId join MediaType on Track.MediaTypeId = MediaType.MediaTypeId join Genre on Track.GenreId = Genre.GenreId;
+
+17. select Invoice.InvoiceId, count(InvoiceLine.InvoiceLineId) as "# of LineItems" from Invoice join InvoiceLine on Invoice.InvoiceId = InvoiceLine.InvoiceId group by Invoice.InvoiceId;
+
+18.
+
+19.
+
+20.
+
+21.
